@@ -21,6 +21,7 @@ import {
 const Header: React.FC = () => {
   const [session, loading] = useSession();
   const router = useRouter();
+  const color = useColorModeValue('gray.200', 'gray.900');
 
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname;
@@ -31,7 +32,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.200', 'gray.900')} px={8}>
+      <Box bg={color} px={8}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <HStack spacing={8} alignItems={'center'}>
             <Link href='/'>
@@ -39,7 +40,7 @@ const Header: React.FC = () => {
                 size={'sm'}
                 isActive={isActive('/')}
                 leftIcon={<ChatIcon />}
-                colorScheme='whatsapp'
+                colorScheme='purple'
                 variant='solid'
               >
                 Posts
@@ -52,7 +53,7 @@ const Header: React.FC = () => {
                     size={'sm'}
                     isActive={isActive('/drafts')}
                     leftIcon={<CopyIcon />}
-                    colorScheme='whatsapp'
+                    colorScheme='purple'
                     variant='solid'
                   >
                     Drafts
@@ -63,7 +64,7 @@ const Header: React.FC = () => {
                     size={'sm'}
                     isActive={isActive('/create')}
                     leftIcon={<PlusSquareIcon />}
-                    colorScheme='whatsapp'
+                    colorScheme='purple'
                     variant='outline'
                   >
                     New post
@@ -79,7 +80,7 @@ const Header: React.FC = () => {
                 leftIcon={<LockIcon />}
                 display={{ base: 'none', md: 'inline-flex' }}
                 size={'sm'}
-                colorScheme='whatsapp'
+                colorScheme='purple'
                 fontWeight={600}
                 mr={4}
               >
@@ -99,7 +100,7 @@ const Header: React.FC = () => {
                   leftIcon={<UnlockIcon />}
                   display={{ base: 'none', md: 'inline-flex' }}
                   size={'sm'}
-                  colorScheme='whatsapp'
+                  colorScheme='purple'
                   fontWeight={600}
                 >
                   Sign In
