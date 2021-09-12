@@ -1,6 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Layout from '../components/Layout';
 
-export default function Home() {
-  return <p>it works</p>;
-}
+const KPI = () => {
+  return (
+    <Layout>
+      <div></div>
+    </Layout>
+  );
+};
+
+export default KPI;
