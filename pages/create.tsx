@@ -15,7 +15,8 @@ import {
 import { CheckCircleIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { useSession } from 'next-auth/client';
 import Link from 'next/link';
-import { useState } from 'react';
+import Router from 'next/router';
+import { useState, SyntheticEvent } from 'react';
 import Layout from '../components/Layout';
 
 const Post: React.FC = () => {
@@ -30,6 +31,21 @@ const Post: React.FC = () => {
     return <div>Loading ...</div>;
   }
 
+  const submitData = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    try {
+      const body = { title, content };
+      await fetch(`http://localhost:3000/api/post`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      await Router.push('/drafts');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (!session) {
     return (
       <Layout>
@@ -38,8 +54,7 @@ const Post: React.FC = () => {
             <Stack align={'center'}>
               <Heading fontSize={'4xl'}>Sign in to your account</Heading>
               <Text fontSize={'lg'} color={'gray.600'}>
-                to create posts <ChakraLink color={'blue.400'}>ssss</ChakraLink>{' '}
-                ✌️
+                to create posts <ChakraLink color={'blue.400'}></ChakraLink>
               </Text>
             </Stack>
           </Stack>
@@ -51,7 +66,7 @@ const Post: React.FC = () => {
   return (
     <Layout>
       <Stack spacing={8} mx={'auto'}>
-        <form>
+        <form onSubmit={submitData}>
           <Stack align={'center'}>
             <Heading fontSize={'3xl'} color={'gray.800'}>
               Create new post
