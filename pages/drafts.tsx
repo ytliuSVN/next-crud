@@ -16,6 +16,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { CalendarIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import { PrismaClient } from '@prisma/client';
 
@@ -60,6 +61,31 @@ export type PostProps = {
   createdAt: Date;
 };
 
+interface ReviewerProps {
+  date: Date;
+  name: string;
+}
+
+export const Reviewer: React.FC<ReviewerProps> = (props) => {
+  const [session, loading] = useSession();
+  if (loading) {
+    return <div>Loading ...</div>;
+  }
+
+  return (
+    <HStack marginTop='2' spacing='2' display='flex' alignItems='center'>
+      <Avatar
+        src={session?.user.image}
+        size='sm'
+        name='Penny Liu'
+      />
+      <Text fontWeight='medium'>{props.name}</Text>
+      <CalendarIcon color={'purple.700'} />
+      <Text color={'purple.700'}>{props.date.toLocaleDateString()}</Text>
+    </HStack>
+  );
+};
+
 const Drafts: React.FC<Props> = (props) => {
   const [session, loading] = useSession();
 
@@ -76,7 +102,7 @@ const Drafts: React.FC<Props> = (props) => {
             <Stack align={'center'}>
               <Heading fontSize={'4xl'}>Sign in to your account</Heading>
               <Text fontSize={'lg'} color={'gray.600'}>
-                to see drafts <Link color={'blue.400'}></Link> ✌️
+                to see drafts <Link color={'blue.400'}></Link>
               </Text>
             </Stack>
           </Stack>
@@ -105,6 +131,48 @@ const Drafts: React.FC<Props> = (props) => {
           </Stack>
         </SimpleGrid>
       </Container>
+
+      {props.drafts.map((post) => (
+        <Container key={post.id} maxW='container.xl'>
+          <Box
+            marginTop={{ base: '1', sm: '5' }}
+            display='flex'
+            flexDirection={{ base: 'column', sm: 'row' }}
+            justifyContent='space-between'
+          >
+            <Box
+              display='flex'
+              flex='1'
+              flexDirection='column'
+              justifyContent='center'
+              marginTop={{ base: '3', sm: '0' }}
+            >
+              <Heading marginTop='1'>
+                <Link
+                  onClick={() => Router.push('/p/[id]', `/p/${post.id}`)}
+                  textDecoration='none'
+                  _hover={{
+                    background: 'white',
+                    color: 'purple.500',
+                  }}
+                >
+                  {post.title}
+                </Link>
+              </Heading>
+              <Text
+                as='p'
+                marginTop='2'
+                color={useColorModeValue('gray.700', 'gray.200')}
+                fontSize='lg'
+              >
+                {post.content}
+              </Text>
+              <Reviewer name={post.author.name} date={post.createdAt} />
+            </Box>
+          </Box>
+          <Divider marginTop='5' />
+        </Container>
+      ))}
     </Layout>
   );
 };

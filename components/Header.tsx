@@ -6,6 +6,7 @@ import {
   HStack,
   Stack,
   useColorModeValue,
+  AvatarBadge,
 } from '@chakra-ui/react';
 import { signOut, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
@@ -43,7 +44,7 @@ const Header: React.FC = () => {
                 colorScheme='purple'
                 variant='solid'
               >
-                Posts
+                Reviews
               </Button>
             </Link>
             {session ? (
@@ -67,7 +68,7 @@ const Header: React.FC = () => {
                     colorScheme='purple'
                     variant='outline'
                   >
-                    New post
+                    New feedback
                   </Button>
                 </Link>
               </>
@@ -86,7 +87,9 @@ const Header: React.FC = () => {
               >
                 Logout
               </Button>
-              <Avatar src={session.user.image} size='sm' name='Penny Liu' />
+              <Avatar src={session.user.image} size='sm' name='Penny Liu'>
+                <AvatarBadge boxSize='1em' bg='green.500' />
+              </Avatar>
             </Flex>
           ) : (
             <Stack

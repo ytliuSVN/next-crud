@@ -67,7 +67,7 @@ const Post: React.FC = () => {
         <form onSubmit={submitData}>
           <Stack align={'center'}>
             <Heading fontSize={'3xl'} color={'gray.800'}>
-              Create new post
+              Create new feedback
             </Heading>
           </Stack>
           <Box
@@ -75,7 +75,7 @@ const Post: React.FC = () => {
             boxShadow={'outline'}
             p={8}
             m={4}
-            color='gray.600'
+            color={'gray.600'}
           >
             <Stack spacing={4}>
               <FormControl id='title'>
@@ -91,7 +91,7 @@ const Post: React.FC = () => {
                 <Textarea
                   cols={50}
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder='Content'
+                  placeholder='Evaluation of Objectives'
                   rows={8}
                   value={content}
                 />
