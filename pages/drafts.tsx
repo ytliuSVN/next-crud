@@ -17,6 +17,32 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import Router from 'next/router';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getSession({ req });
+  if (!session) {
+    res.statusCode = 403;
+    return { props: { drafts: [] } };
+  }
+
+  const drafts = await prisma.post.findMany({
+    where: {
+      author: { email: session.user.email },
+      published: false,
+    },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+  return {
+    props: { drafts },
+  };
+};
 
 type Props = {
   drafts: PostProps[];
@@ -79,45 +105,6 @@ const Drafts: React.FC<Props> = (props) => {
           </Stack>
         </SimpleGrid>
       </Container>
-
-      {props.drafts.map((post) => (
-        <Container
-          key={post.id}
-          maxW='container.xl'
-          onClick={() => Router.push('/p/[id]', `/p/${post.id}`)}
-        >
-          <Box
-            marginTop={{ base: '1', sm: '5' }}
-            display='flex'
-            flexDirection={{ base: 'column', sm: 'row' }}
-            justifyContent='space-between'
-          >
-            <Box
-              display='flex'
-              flex='1'
-              flexDirection='column'
-              justifyContent='center'
-              marginTop={{ base: '3', sm: '0' }}
-            >
-              <Heading marginTop='1'>
-                <Link textDecoration='none' _hover={{ textDecoration: 'none' }}>
-                  {post.title}
-                </Link>
-              </Heading>
-              <Text
-                as='p'
-                marginTop='2'
-                color={useColorModeValue('gray.700', 'gray.200')}
-                fontSize='lg'
-              >
-                {post.content}
-              </Text>
-              <BlogAuthor name={post.author.name} date={post.createdAt} />
-            </Box>
-          </Box>
-          <Divider marginTop='5' />
-        </Container>
-      ))}
     </Layout>
   );
 };
