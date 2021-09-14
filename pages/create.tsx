@@ -24,8 +24,6 @@ const Post: React.FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const toast = useToast();
-  const colorFlex = useColorModeValue('gray.50', 'gray.800');
-  const colorBox = useColorModeValue('white', 'gray.700');
 
   if (loading) {
     return <div>Loading ...</div>;
@@ -49,7 +47,7 @@ const Post: React.FC = () => {
   if (!session) {
     return (
       <Layout>
-        <Flex minH={'100vh'} align={'center'} justify={'center'} bg={colorFlex}>
+        <Flex minH={'100vh'} align={'center'} justify={'center'}>
           <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
               <Heading fontSize={'4xl'}>Sign in to your account</Heading>
@@ -72,7 +70,13 @@ const Post: React.FC = () => {
               Create new post
             </Heading>
           </Stack>
-          <Box rounded={'lg'} bg={colorBox} boxShadow={'lg'} p={8}>
+          <Box
+            rounded={'md'}
+            boxShadow={'outline'}
+            p={8}
+            m={4}
+            color='gray.600'
+          >
             <Stack spacing={4}>
               <FormControl id='title'>
                 <Input
