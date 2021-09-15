@@ -16,7 +16,6 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { CalendarIcon } from '@chakra-ui/icons';
 import Router from 'next/router';
 import { PrismaClient } from '@prisma/client';
 
@@ -78,10 +77,11 @@ export const Reviewer: React.FC<ReviewerProps> = (props) => {
         src={session?.user.image}
         size='sm'
         name='Penny Liu'
+        mr={1}
       />
       <Text fontWeight='medium'>{props.name}</Text>
-      <CalendarIcon color={'purple.700'} />
-      <Text color={'purple.700'}>{props.date.toLocaleDateString()}</Text>
+      <Text>—</Text>
+      <Text>{props.date.toLocaleDateString()}</Text>
     </HStack>
   );
 };
@@ -149,7 +149,7 @@ const Drafts: React.FC<Props> = (props) => {
             >
               <Heading marginTop='1'>
                 <Link
-                  onClick={() => Router.push('/p/[id]', `/p/${post.id}`)}
+                  onClick={() => Router.push('/post/[id]', `/post/${post.id}`)}
                   textDecoration='none'
                   _hover={{
                     background: 'white',
