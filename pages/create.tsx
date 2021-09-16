@@ -111,8 +111,8 @@ const Post: React.FC = () => {
                     variant='solid'
                     onClick={() =>
                       toast({
-                        title: 'Post created.',
-                        description: "We've created your post for you.",
+                        title: 'Feedback created.',
+                        description: "We've created your feedback for you.",
                         status: 'info',
                         duration: 5000,
                         isClosable: true,

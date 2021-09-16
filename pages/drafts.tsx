@@ -149,7 +149,7 @@ const Drafts: React.FC<Props> = (props) => {
             >
               <Heading marginTop='1'>
                 <Link
-                  onClick={() => Router.push('/post/[id]', `/post/${post.id}`)}
+                  onClick={() => Router.push('/post/[pid]', `/post/${post.id}`)}
                   textDecoration='none'
                   _hover={{
                     background: 'white',
