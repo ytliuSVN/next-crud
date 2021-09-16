@@ -18,9 +18,10 @@ import { useColorModeValue } from '@chakra-ui/system';
 import Router from 'next/router';
 import { useSession } from 'next-auth/client';
 import { Avatar, Spinner } from '@chakra-ui/react';
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
+import prisma from '../lib/prisma';
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 interface ReviewerProps {
   date: Date;

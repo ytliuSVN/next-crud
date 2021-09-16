@@ -17,9 +17,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import Router from 'next/router';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });

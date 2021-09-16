@@ -25,9 +25,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import Layout from '../../components/Layout';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from '../../lib/prisma';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const post = await prisma.post.findUnique({
