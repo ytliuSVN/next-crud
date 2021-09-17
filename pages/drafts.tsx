@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import { useSession, getSession } from 'next-auth/client';
 import {
@@ -75,7 +76,6 @@ export const Reviewer: React.FC<ReviewerProps> = (props) => {
       <Avatar
         src={session?.user.image}
         size='sm'
-        name='Penny Liu'
         mr={1}
       />
       <Text fontWeight='medium'>{props.name}</Text>
@@ -112,6 +112,11 @@ const Drafts: React.FC<Props> = (props) => {
 
   return (
     <Layout>
+      <Head>
+        <title>List of Drafts</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+
       <Container maxW='container.xl' py={12}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           <Stack spacing={4}>

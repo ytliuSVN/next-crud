@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { CheckCircleIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { useSession } from 'next-auth/client';
+import Head from 'next/head';
 import Link from 'next/link';
 import Router from 'next/router';
 import { useState, SyntheticEvent } from 'react';
@@ -63,13 +64,13 @@ const Post: React.FC = () => {
 
   return (
     <Layout>
-      <Stack spacing={8} mx={'auto'}>
+      <Head>
+        <title>Create Feedback</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+
+      <Stack spacing={8} m={4}>
         <form onSubmit={submitData}>
-          <Stack align={'center'}>
-            <Heading fontSize={'3xl'} color={'gray.800'}>
-              Create new feedback
-            </Heading>
-          </Stack>
           <Box
             rounded={'md'}
             boxShadow={'outline'}

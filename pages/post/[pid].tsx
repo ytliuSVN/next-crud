@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import Router from 'next/router';
 import { useSession } from 'next-auth/client';
 import { Button } from '@chakra-ui/button';
@@ -19,7 +20,7 @@ import {
   Container,
   Heading,
   HStack,
-  Link,
+  Spinner,
   Stack,
   Text,
   useColorModeValue,
@@ -77,12 +78,16 @@ export type PostProps = {
 export const BlogAuthor: React.FC<BlogAuthorProps> = (props) => {
   const [session, loading] = useSession();
   if (loading) {
-    return <div>Loading ...</div>;
+    return (
+      <Stack direction='row' spacing={4}>
+        <Spinner size='lg' />
+      </Stack>
+    );
   }
 
   return (
     <HStack marginTop='2' spacing='2' display='flex' alignItems='center'>
-      <Avatar src={session?.user.image} size='sm' name='Penny Liu' mr={1} />
+      <Avatar src={session?.user.image} size='sm' name={props.name} mr={1} />
       <Text fontWeight='medium'>{props.name}</Text>
       <Text>—</Text>
       <Text>{props.date.toLocaleDateString()}</Text>
@@ -112,6 +117,11 @@ const Post: React.FC<PostProps> = (props) => {
 
   return (
     <Layout>
+      <Head>
+        <title>Review Draft</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+
       <div>
         {/* alert */}
         <AlertDialog

@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import Layout from '../components/Layout';
 import Head from 'next/head';
-import Image from 'next/image';
 import React from 'react';
 import {
   Box,
@@ -18,10 +17,7 @@ import { useColorModeValue } from '@chakra-ui/system';
 import Router from 'next/router';
 import { useSession } from 'next-auth/client';
 import { Avatar, Spinner } from '@chakra-ui/react';
-// import { PrismaClient } from '@prisma/client';
 import prisma from '../lib/prisma';
-
-// const prisma = new PrismaClient();
 
 interface ReviewerProps {
   date: Date;
@@ -40,7 +36,7 @@ export const Reviewer: React.FC<ReviewerProps> = (props) => {
 
   return (
     <HStack marginTop='2' spacing='2' display='flex' alignItems='center'>
-      <Avatar src={session?.user.image} size='sm' name='Penny Liu' mr={1} />
+      <Avatar src={session?.user.image} size='sm' name={props.name} mr={1} />
       <Text fontWeight='medium'>{props.name}</Text>
       <Text>—</Text>
       <Text>{props.date.toLocaleDateString()}</Text>
@@ -84,6 +80,11 @@ type Props = {
 const KPI: React.FC<Props> = (props) => {
   return (
     <Layout>
+      <Head>
+        <title>List of Reviews</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+
       <Container maxW='container.xl' py={12}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           <Stack spacing={4}>

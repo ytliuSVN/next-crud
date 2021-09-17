@@ -87,7 +87,7 @@ const Header: React.FC = () => {
               >
                 Logout
               </Button>
-              <Avatar src={session.user.image} size='sm' name='Penny Liu'>
+              <Avatar src={session.user.image} size='sm'>
                 <AvatarBadge boxSize='1em' bg='green.500' />
               </Avatar>
             </Flex>
