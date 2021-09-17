@@ -50,6 +50,7 @@ export const Reviewer: React.FC<ReviewerProps> = (props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.post.findMany({
+    orderBy: { createdAt: 'desc' },
     where: {
       published: true,
     },
