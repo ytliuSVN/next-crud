@@ -103,11 +103,7 @@ const KPI: React.FC<Props> = (props) => {
       </Container>
 
       {props.feed.map((post) => (
-        <Container
-          key={post.id}
-          maxW='container.xl'
-          onClick={() => Router.push('/post/[pid]', `/post/${post.id}`)}
-        >
+        <Container key={post.id} maxW='container.xl'>
           <Box
             marginTop={{ base: '1', sm: '5' }}
             display='flex'
@@ -122,20 +118,27 @@ const KPI: React.FC<Props> = (props) => {
               marginTop={{ base: '3', sm: '0' }}
             >
               <Heading marginTop='1'>
-                <Link textDecoration='none' _hover={{ textDecoration: 'none' }}>
+                <Link
+                  onClick={() => Router.push('/post/[pid]', `/post/${post.id}`)}
+                  textDecoration='none'
+                  _hover={{
+                    background: 'white',
+                    color: 'purple.500',
+                  }}
+                >
                   {post.title}
                 </Link>
               </Heading>
-              <Link textDecoration='none' _hover={{ textDecoration: 'none' }}>
-                <Text
-                  as='p'
-                  marginTop='2'
-                  color={useColorModeValue('gray.700', 'gray.200')}
-                  fontSize='lg'
-                >
-                  {post.content}
-                </Text>
-              </Link>
+
+              <Text
+                as='p'
+                marginTop='2'
+                color={useColorModeValue('gray.700', 'gray.200')}
+                fontSize='lg'
+              >
+                {post.content}
+              </Text>
+
               <Reviewer name={post.author.name} date={post.createdAt} />
             </Box>
           </Box>
