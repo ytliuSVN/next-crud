@@ -73,11 +73,7 @@ export const Reviewer: React.FC<ReviewerProps> = (props) => {
 
   return (
     <HStack marginTop='2' spacing='2' display='flex' alignItems='center'>
-      <Avatar
-        src={session?.user.image}
-        size='sm'
-        mr={1}
-      />
+      <Avatar src={session?.user.image} size='sm' mr={1} />
       <Text fontWeight='medium'>{props.name}</Text>
       <Text>—</Text>
       <Text>{props.date.toLocaleDateString()}</Text>
@@ -91,6 +87,9 @@ const Drafts: React.FC<Props> = (props) => {
   if (!session) {
     return (
       <Layout>
+        <Head>
+          <title>List of Drafts</title>
+        </Head>
         <Flex
           minH={'100vh'}
           align={'center'}
@@ -114,7 +113,6 @@ const Drafts: React.FC<Props> = (props) => {
     <Layout>
       <Head>
         <title>List of Drafts</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
 
       <Container maxW='container.xl' py={12}>

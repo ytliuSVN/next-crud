@@ -82,7 +82,6 @@ const KPI: React.FC<Props> = (props) => {
     <Layout>
       <Head>
         <title>List of Reviews</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
 
       <Container maxW='container.xl' py={12}>

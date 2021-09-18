@@ -66,7 +66,6 @@ const Post: React.FC = () => {
     <Layout>
       <Head>
         <title>Create Feedback</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
 
       <Stack spacing={8} m={4}>

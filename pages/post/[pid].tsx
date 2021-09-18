@@ -119,7 +119,6 @@ const Post: React.FC<PostProps> = (props) => {
     <Layout>
       <Head>
         <title>Review Draft</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
 
       <div>
