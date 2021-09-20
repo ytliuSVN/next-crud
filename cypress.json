@@ -1,0 +1,6 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "ignoreTestFiles": "**/ignoredTestFiles/*.js",
+    "viewportHeight": 1920,
+    "viewportWidth": 1080
+}
