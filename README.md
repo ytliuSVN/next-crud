@@ -21,6 +21,8 @@ A Fullstack web application that allows employees to submit feedback. Integratio
   * Server-side Rendering with [Next.js](https://nextjs.org/docs/basic-features/typescript)
   * Integrate [Prisma](https://www.prisma.io/) to store our users and their sessions in SQLite database
   * Concern the authentication with [NextAuth.js](https://next-auth.js.org/v3/getting-started/introduction)
+* E2E Testing
+  * End to End tests with [Cypress](https://www.cypress.io/) testing framework
 ## App Details
 
 ### Instructions
