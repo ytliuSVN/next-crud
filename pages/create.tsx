@@ -15,7 +15,6 @@ import {
 import { CheckCircleIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { useSession } from 'next-auth/client';
 import Head from 'next/head';
-import Link from 'next/link';
 import Router from 'next/router';
 import { useState, SyntheticEvent } from 'react';
 import Layout from '../components/Layout';
@@ -121,15 +120,17 @@ const Post: React.FC = () => {
                   >
                     Create
                   </Button>
-                  <Link href='/'>
-                    <Button
-                      leftIcon={<SmallCloseIcon />}
-                      colorScheme='red'
-                      variant='outline'
-                    >
-                      Cancel
-                    </Button>
-                  </Link>
+                  <Button
+                    leftIcon={<SmallCloseIcon />}
+                    colorScheme='red'
+                    variant='outline'
+                    onClick={() => {
+                      setTitle('');
+                      setContent('');
+                    }}
+                  >
+                    Cancel
+                  </Button>
                 </Stack>
               </Stack>
             </Stack>
