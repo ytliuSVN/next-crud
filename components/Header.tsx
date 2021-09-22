@@ -38,6 +38,7 @@ const Header: React.FC = () => {
           <HStack spacing={8} alignItems={'center'}>
             <Link href='/'>
               <Button
+                id='reviews'
                 size={'sm'}
                 isActive={isActive('/')}
                 leftIcon={<ChatIcon />}
@@ -51,6 +52,7 @@ const Header: React.FC = () => {
               <>
                 <Link href='/drafts'>
                   <Button
+                    id='drafts'
                     size={'sm'}
                     isActive={isActive('/drafts')}
                     leftIcon={<CopyIcon />}
@@ -62,6 +64,7 @@ const Header: React.FC = () => {
                 </Link>
                 <Link href='/create'>
                   <Button
+                    id='newFeedback'
                     size={'sm'}
                     isActive={isActive('/create')}
                     leftIcon={<PlusSquareIcon />}
@@ -77,6 +80,7 @@ const Header: React.FC = () => {
           {session ? (
             <Flex alignItems={'center'}>
               <Button
+                id='logout'
                 onClick={() => signOut()}
                 leftIcon={<LockIcon />}
                 display={{ base: 'none', md: 'inline-flex' }}
@@ -100,6 +104,7 @@ const Header: React.FC = () => {
             >
               <Link href='/api/auth/signin'>
                 <Button
+                  id='signIn'
                   leftIcon={<UnlockIcon />}
                   display={{ base: 'none', md: 'inline-flex' }}
                   size={'sm'}
