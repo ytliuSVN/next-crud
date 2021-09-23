@@ -13,6 +13,9 @@ describe('Locators', () => {
     cy.get('button.chakra-button#reviews');
 
     // Get all elements with specific data test id
-    cy.get("[data-cy='signIn']");
+    // cy.get("[data-cy='signIn']");
+
+    // create custom command
+    cy.getByTestId('signIn');
   });
 });
