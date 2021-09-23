@@ -105,6 +105,7 @@ const Post: React.FC = () => {
                   <Button
                     disabled={!content || !title}
                     type='submit'
+                    data-cy='submit'
                     leftIcon={<CheckCircleIcon />}
                     colorScheme='whatsapp'
                     variant='solid'

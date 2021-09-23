@@ -39,6 +39,7 @@ const Header: React.FC = () => {
             <Link href='/'>
               <Button
                 id='reviews'
+                data-cy='reviews'
                 size={'sm'}
                 isActive={isActive('/')}
                 leftIcon={<ChatIcon />}
@@ -105,6 +106,7 @@ const Header: React.FC = () => {
               <Link href='/api/auth/signin'>
                 <Button
                   id='signIn'
+                  data-cy='signIn'
                   leftIcon={<UnlockIcon />}
                   display={{ base: 'none', md: 'inline-flex' }}
                   size={'sm'}

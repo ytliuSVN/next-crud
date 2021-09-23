@@ -6,14 +6,13 @@ describe('Locators', () => {
   });
 
   it('locating elements with get', () => {
-    // Get all elements by tag name
-    cy.get('button');
-    cy.get('h2');
+    // Get all elements by tag name AND class
+    cy.get('button.chakra-button');
 
-    // Get all elements by className
-    cy.get('.chakra-button');
+    // Get all elements by tag name AND class and id
+    cy.get('button.chakra-button#reviews');
 
-    // Get all elements by id
-    cy.get('#signIn');
+    // Get all elements with specific data test id
+    cy.get("[data-cy='signIn']");
   });
 });
