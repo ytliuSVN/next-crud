@@ -44,3 +44,18 @@ SECRET=RANDOM_STRING
 GITHUB_ID=
 GITHUB_SECRET=
 ```
+
+### Run the test
+
+There are two ways you can run the test:
+
+Opens the Cypress Test Runner in the browser.
+```
+yarn cypress:open
+```
+
+Runs Cypress tests to completion.
+
+```
+yarn cypress:run
+```
