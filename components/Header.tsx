@@ -33,7 +33,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <Box bg={bg} px={8}>
+      <Box bg={bg} px={8} id='header'>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <HStack spacing={8} alignItems={'center'}>
             <Link href='/'>

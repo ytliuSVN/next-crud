@@ -14,9 +14,6 @@ describe('Locators', () => {
 
     // Get all elements with specific data test id
     // cy.get("[data-cy='signIn']");
-
-    // create custom command
-    cy.getByTestId('signIn');
   });
 
   it('locating elements with contain', () => {
@@ -28,5 +25,14 @@ describe('Locators', () => {
     // cy.contains(selector, content)
     // cy.contains("[type='submit']", 'Text');
     // cy.get("[type='submit']").contains('Text');
+  });
+
+  it('locating elements with find', () => {
+    cy.get('#header').find("[data-cy='signIn']");
+  });
+
+  it('locating elements with custom commands', () => {
+    // Get all elements by tag
+    cy.getByTestId('signIn');
   });
 });

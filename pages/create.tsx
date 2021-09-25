@@ -68,7 +68,7 @@ const Post: React.FC = () => {
       </Head>
 
       <Stack spacing={8} m={4}>
-        <form onSubmit={submitData}>
+        <form onSubmit={submitData} id='form-1'>
           <Box
             rounded={'md'}
             boxShadow={'outline'}
