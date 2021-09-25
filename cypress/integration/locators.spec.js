@@ -18,4 +18,15 @@ describe('Locators', () => {
     // create custom command
     cy.getByTestId('signIn');
   });
+
+  it('locating elements with contain', () => {
+    // Get element by text
+    // .contains(content)
+    cy.contains('Sign In');
+
+    // With Selector
+    // cy.contains(selector, content)
+    // cy.contains("[type='submit']", 'Text');
+    // cy.get("[type='submit']").contains('Text');
+  });
 });
