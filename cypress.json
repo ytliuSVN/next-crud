@@ -2,7 +2,8 @@
     "baseUrl": "http://localhost:3000",
     "ignoreTestFiles": [
         "**/1-getting-started/*.js",
-        "**/2-advanced-examples/*.js"
+        "**/2-advanced-examples/*.js",
+        "login.spec.js"
     ],
     "viewportHeight": 1920,
     "viewportWidth": 1080
