@@ -29,12 +29,26 @@ interface IProps {
 function AddModal({ accounts, setAccounts }: IProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const [name, setUsername] = useState('');
+
   const initialRef = React.useRef();
   const finalRef = React.useRef();
 
   const handleAdd = async () => {
-    onClose();
+    if (name) {
+      setAccounts([
+        ...accounts,
+        {
+          _id: uuid(),
+          name,
+          completed: false,
+        },
+      ]);
+      setUsername('');
+      onClose();
+    }
   };
+
   return (
     <>
       <Button onClick={onOpen}>Add</Button>
@@ -50,13 +64,15 @@ function AddModal({ accounts, setAccounts }: IProps) {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>First name</FormLabel>
-              <Input ref={initialRef} placeholder='First name' />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>Last name</FormLabel>
-              <Input placeholder='Last name' />
+              <FormLabel>Username</FormLabel>
+              <Input
+                ref={initialRef}
+                placeholder='Username'
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                value={name}
+              />
             </FormControl>
           </ModalBody>
 
