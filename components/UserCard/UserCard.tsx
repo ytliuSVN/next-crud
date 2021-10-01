@@ -30,7 +30,11 @@ function UserCard({ account, accounts, setAccounts }: IProps) {
       }}
     >
       <div className={styles['UserCard__completion-container']}>
-        {account.completed ? <ViewOffIcon /> : <ViewIcon />}
+        {account.completed ? (
+          <ViewOffIcon data-cy='ViewOffIcon' />
+        ) : (
+          <ViewIcon data-cy='ViewIcon' />
+        )}
       </div>
       <div className={styles['UserCard__habit-container']}>{account.name}</div>
     </div>

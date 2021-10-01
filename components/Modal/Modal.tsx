@@ -77,10 +77,12 @@ function AddModal({ accounts, setAccounts }: IProps) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={handleAdd}>
+            <Button onClick={onClose} mr={3}>
+              Cancel
+            </Button>
+            <Button colorScheme='blue' onClick={handleAdd}>
               Save Changes
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
